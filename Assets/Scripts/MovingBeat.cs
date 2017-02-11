@@ -27,12 +27,12 @@ public class MovingBeat : MonoBehaviour {
         transform.position = StartPosition;
         transform.LookAt(Middle.transform);
 
-        //journeyLength = Vector3.Distance(transform.position, Middle.transform.position);
+        journeyLength = Vector3.Distance(transform.position, Middle.transform.position);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        print(timeofdeath - 1);
+        print(timeofdeath);
         Destroy(gameObject);
     }
 
