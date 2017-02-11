@@ -9,6 +9,8 @@ public class MovingBeat : MonoBehaviour {
     [Range(0,500)]
     public float RateOfTravel;
 
+    float timeofdeath;
+
     public Vector3 StartPosition;
 
     // Just in case the middle changes from 0,0
@@ -23,6 +25,7 @@ public class MovingBeat : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        print(timeofdeath);
         Destroy(gameObject);
     }
 
@@ -30,5 +33,7 @@ public class MovingBeat : MonoBehaviour {
     void FixedUpdate () {
         float step = RateOfTravel * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, Middle.transform.position, step);
+
+        timeofdeath += Time.deltaTime;
     }
 }
