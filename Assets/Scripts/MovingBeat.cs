@@ -41,9 +41,11 @@ public class MovingBeat : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        float distCovered = (Time.time - startTime) * RateOfTravel;
-        float fracJourney = distCovered / journeyLength;
-        transform.position = Vector3.LerpUnclamped(StartPosition, Middle.transform.position, (Time.time - 0.041113f) / TimeofBeat);
+        //float distCovered = (Time.time - startTime) * RateOfTravel;
+        //float fracJourney = distCovered / journeyLength;
+        //transform.position = Vector3.LerpUnclamped(StartPosition, Middle.transform.position, (Time.time - 0.041113f) / TimeofBeat);
+
+        transform.position = new Vector3(transform.position.x - (1 * RateOfTravel), transform.position.y, transform.position.z);
 
         timeofdeath += Time.deltaTime;
     }

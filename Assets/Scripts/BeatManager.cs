@@ -66,7 +66,7 @@ public class BeatManager : MonoBehaviour {
                                      TempBeat.Middle.transform.position.y,
                                      TempBeat.Middle.transform.position.z);
 
-                FirstTime = true;
+                FirstTime = false;
             }
             else
             {
