@@ -28,6 +28,7 @@ public class BeatManager : MonoBehaviour {
     void Start ()
     {
         string text = textFile.text;  //this is the content as string
+
         AddtoIntList(text);
         TempBeat.Middle = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(SpawnLevel());
