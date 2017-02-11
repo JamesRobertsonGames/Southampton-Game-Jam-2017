@@ -5,6 +5,7 @@ using UnityEngine;
 public class BeatManager : MonoBehaviour {
 
     public List<MovingBeat> BeatMap = new List<MovingBeat>();
+    public MovingBeat TempBeat;
     public TextAsset textFile;     // drop your file here in inspector
 
     // May inherit this from the other class in Moving Beat. Maybe even the prefab
@@ -17,15 +18,14 @@ public class BeatManager : MonoBehaviour {
 
     int testingbuffer;
 
-
-
     // Use this for initialization
     void Start ()
     { 
         string text = textFile.text;  //this is the content as string
         AddtoIntList(text);
+        SpawnLevel();
 
-        print(Timings[0]);
+        // print(Timings[0]);
     }
 
     public static void AddtoIntList(string str)
@@ -52,8 +52,17 @@ public class BeatManager : MonoBehaviour {
     void SpawnLevel()
     {
         // Can't find the size of tarray at the moment
-
-        I
+        for (int i = 0; i < Timings.Count; i++)
+        {
+            // We work on the Z and X axis
+            TempBeat.StartPosition = new Vector3(TempBeat.Middle.transform.position.x + Timings[i], 
+                                                 TempBeat.Middle.transform.position.y, 
+                                                 TempBeat.Middle.transform.position.z);
+            BeatMap.Add(Instantiate(TempBeat));
+            TempBeat = new MovingBeat();
+        }
+        
+        
     }
 
     // Update is called once per frame
