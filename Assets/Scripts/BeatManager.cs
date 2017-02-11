@@ -75,8 +75,6 @@ public class BeatManager : MonoBehaviour {
                 itterationCount += 1;
             }
 
-
-            //TempBeat.transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(0, 359));
             BeatMap.Add(Instantiate(TempBeat));
         }
 

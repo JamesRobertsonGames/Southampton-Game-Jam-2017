@@ -25,6 +25,7 @@ public class MovingBeat : MonoBehaviour {
 	void Start () {
         startTime = Time.time;
         transform.position = StartPosition;
+        transform.RotateAround(Middle.transform.position, Vector3.down, Random.Range(0, 359));
         transform.LookAt(Middle.transform);
 
         journeyLength = Vector3.Distance(transform.position, Middle.transform.position);
@@ -32,7 +33,7 @@ public class MovingBeat : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        print(timeofdeath);
+        //print(timeofdeath);
         Destroy(gameObject);
     }
 
