@@ -55,11 +55,11 @@ public class BeatManager : MonoBehaviour {
         for (int i = 0; i < Timings.Count; i++)
         {
             // We work on the Z and X axis
-            TempBeat.StartPosition = new Vector3(TempBeat.Middle.transform.position.x + (Timings[i] / divisionOfTimeSplit), 
+            TempBeat.StartPosition = new Vector3(TempBeat.Middle.transform.position.x  + (Timings[i] / divisionOfTimeSplit), 
                                                  TempBeat.Middle.transform.position.y, 
                                                  TempBeat.Middle.transform.position.z);
 
-            TempBeat.transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(0, 359));
+            //TempBeat.transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(0, 359));
             BeatMap.Add(Instantiate(TempBeat));
         }
         
