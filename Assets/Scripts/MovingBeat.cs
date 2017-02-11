@@ -16,7 +16,7 @@ public class MovingBeat : MonoBehaviour {
     public int increment;
 
     // 0, 36, 72, 108, 144, 180, 216, 252, 288, 324
-    public List<int> laneAngles = new List<int>();
+    public List<float> laneAngles = new List<float>();
 
     float journeyLength;
 
@@ -26,7 +26,6 @@ public class MovingBeat : MonoBehaviour {
     public GameObject Middle;
 
     int selectedAngle;
-    
 
 	// Use this for initialization
 	void Start () {
@@ -40,7 +39,8 @@ public class MovingBeat : MonoBehaviour {
 
         selectedAngle = Random.Range(0, laneAngles.Count);
 
-        transform.RotateAround(Middle.transform.position, Vector3.down, selectedAngle);
+        transform.RotateAround(Middle.transform.position, Vector3.down, laneAngles[selectedAngle]);
+
         transform.LookAt(Middle.transform);
 
         journeyLength = Vector3.Distance(transform.position, Middle.transform.position);
