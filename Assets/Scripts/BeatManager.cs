@@ -5,7 +5,7 @@ using UnityEngine;
 public class BeatManager : MonoBehaviour {
 
     public List<MovingBeat> BeatMap = new List<MovingBeat>();
-    public MovingBeat TempBeat;
+    public MovingBeat TempBeat = new MovingBeat();
     public TextAsset textFile;     // drop your file here in inspector
 
     // May inherit this from the other class in Moving Beat. Maybe even the prefab
@@ -13,8 +13,6 @@ public class BeatManager : MonoBehaviour {
     public float RateOfTravel = 1;
 
     public static List<int> Timings = new List<int>();
-
-    bool stillNumber = true;
 
     int testingbuffer;
 
@@ -59,7 +57,6 @@ public class BeatManager : MonoBehaviour {
                                                  TempBeat.Middle.transform.position.y, 
                                                  TempBeat.Middle.transform.position.z);
             BeatMap.Add(Instantiate(TempBeat));
-            TempBeat = new MovingBeat();
         }
         
         
