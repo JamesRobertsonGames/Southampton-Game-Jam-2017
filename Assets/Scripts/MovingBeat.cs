@@ -20,9 +20,14 @@ public class MovingBeat : MonoBehaviour {
         transform.position = StartPosition;
         transform.LookAt(Middle.transform);
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
         float step = RateOfTravel * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, Middle.transform.position, step);
     }

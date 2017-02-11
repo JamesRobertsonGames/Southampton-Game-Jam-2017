@@ -8,24 +8,21 @@ public class BeatManager : MonoBehaviour {
 
     // Ignore that stupid warning int he edit it all works fine
     public MovingBeat TempBeat = new MovingBeat();
-
-
+    
     // This will change per song
     public TextAsset textFile;
 
-    // May inherit this from the other class in Moving Beat. Maybe even the prefab
     [Range(0, 100)]
-    public float RateOfTravel = 1;
+    public float divisionOfTimeSplit = 1;
 
     public static List<int> Timings = new List<int>();
-
-    int testingbuffer;
 
     // Use this for initialization
     void Start ()
     { 
         string text = textFile.text;  //this is the content as string
         AddtoIntList(text);
+        TempBeat.Middle = GameObject.FindGameObjectWithTag("Player");
         SpawnLevel();
 
         // print(Timings[0]);
@@ -58,9 +55,11 @@ public class BeatManager : MonoBehaviour {
         for (int i = 0; i < Timings.Count; i++)
         {
             // We work on the Z and X axis
-            TempBeat.StartPosition = new Vector3(TempBeat.Middle.transform.position.x + Timings[i], 
+            TempBeat.StartPosition = new Vector3(TempBeat.Middle.transform.position.x + (Timings[i] / divisionOfTimeSplit), 
                                                  TempBeat.Middle.transform.position.y, 
                                                  TempBeat.Middle.transform.position.z);
+
+            TempBeat.transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(0, 359));
             BeatMap.Add(Instantiate(TempBeat));
         }
         
