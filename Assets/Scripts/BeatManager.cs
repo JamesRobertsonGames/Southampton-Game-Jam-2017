@@ -61,6 +61,7 @@ public class BeatManager : MonoBehaviour {
             // We work on the Z and X axis
             if (FirstTime)
             {
+                TempBeat.TimeofBeat = Timings[i];
                 TempBeat.StartPosition = new Vector3(TempBeat.Middle.transform.position.x + (Timings[i] / divisionOfTimeSplit),
                                      TempBeat.Middle.transform.position.y,
                                      TempBeat.Middle.transform.position.z);

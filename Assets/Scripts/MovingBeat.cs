@@ -17,6 +17,8 @@ public class MovingBeat : MonoBehaviour {
 
     float startTime;
 
+    public float TimeofBeat;
+
     // Just in case the middle changes from 0,0
     public GameObject Middle;
     
@@ -28,6 +30,7 @@ public class MovingBeat : MonoBehaviour {
         transform.LookAt(Middle.transform);
 
         journeyLength = Vector3.Distance(transform.position, Middle.transform.position);
+        TimeofBeat /= 1000;
     }
 
     void OnTriggerEnter(Collider other)
@@ -40,7 +43,7 @@ public class MovingBeat : MonoBehaviour {
     void FixedUpdate () {
         float distCovered = (Time.time - startTime) * RateOfTravel;
         float fracJourney = distCovered / journeyLength;
-        transform.position = Vector3.Lerp(StartPosition, Middle.transform.position, Time.time - 0.041113f);
+        transform.position = Vector3.LerpUnclamped(StartPosition, Middle.transform.position, (Time.time - 0.041113f) / TimeofBeat);
 
         timeofdeath += Time.deltaTime;
     }
