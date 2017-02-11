@@ -12,14 +12,17 @@ public class BeatManager : MonoBehaviour {
     // This will change per song
     public TextAsset textFile;
 
-    public static bool FirstTime = true;
+    public bool FirstTime = true;
+
+    [Range(0,254)]
+    public int threshold;
 
     int itterationCount = 1;
 
     [Range(0, 100)]
     public float divisionOfTimeSplit = 1;
 
-    public static List<float> Timings = new List<float>();
+    public List<float> Timings = new List<float>();
 
     // Use this for initialization
     void Start ()
@@ -32,15 +35,25 @@ public class BeatManager : MonoBehaviour {
         // print(Timings[0]);
     }
 
-    public static void AddtoIntList(string str)
+    public void AddtoIntList(string str)
     {
-        foreach (var s in str.Split(','))
+        foreach (var s in str.Split('\n'))
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrEmpty(s))
                 return;
 
+            string milisecond = s.Split(',')[0];
+            string velocity = s.Split(',')[1];
+
+            int velocityInt;
+            int.TryParse(velocity, out velocityInt);
+            if (velocityInt < threshold)
+            {
+                continue;
+            }
+
             int num;
-            if (int.TryParse(s, out num))
+            if (int.TryParse(milisecond, out num))
             {
                 Timings.Add(num);
             }
