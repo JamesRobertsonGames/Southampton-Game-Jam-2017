@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ControllerLookAtCursor : MonoBehaviour {
 
-    Vector3 LookPoition;
+    [Range(0, 100)]
+    public int speed = 7;
 
     // Use this for initialization
     void Start ()
@@ -37,7 +38,7 @@ public class ControllerLookAtCursor : MonoBehaviour {
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
 
             // Smoothly rotate towards the target point.
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 4 * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
         }
     }
 }
