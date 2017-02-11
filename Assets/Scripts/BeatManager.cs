@@ -5,8 +5,13 @@ using UnityEngine;
 public class BeatManager : MonoBehaviour {
 
     public List<MovingBeat> BeatMap = new List<MovingBeat>();
+
+    // Ignore that stupid warning int he edit it all works fine
     public MovingBeat TempBeat = new MovingBeat();
-    public TextAsset textFile;     // drop your file here in inspector
+
+
+    // This will change per song
+    public TextAsset textFile;
 
     // May inherit this from the other class in Moving Beat. Maybe even the prefab
     [Range(0, 100)]
