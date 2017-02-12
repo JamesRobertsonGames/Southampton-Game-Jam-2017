@@ -31,7 +31,7 @@ public class BeatManager : MonoBehaviour {
 
         AddtoIntList(text);
         TempBeat.Middle = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(SpawnLevel());
+        SpawnLevel();
 
         // print(Timings[0]);
     }
@@ -67,7 +67,7 @@ public class BeatManager : MonoBehaviour {
         return;
     }
 
-    IEnumerator SpawnLevel()
+    void SpawnLevel()
     {
         // Can't find the size of tarray at the moment
         for (int i = 0; i < Timings.Count; i++)
@@ -91,8 +91,6 @@ public class BeatManager : MonoBehaviour {
 
             BeatMap.Add(Instantiate(TempBeat));
         }
-
-        yield return null;
     }
 
     // Update is called once per frame
