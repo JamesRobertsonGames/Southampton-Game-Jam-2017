@@ -12,6 +12,8 @@ public class PlayerScoring : MonoBehaviour {
     [Range(0, 100)]
     public int scoreMultiplier = 1;
 
+    public TextMesh text;
+
     // For now I am going to suggest this is not placed into the game
     bool death;
 
@@ -32,6 +34,8 @@ public class PlayerScoring : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        text.text = "Score: " + Score;
 		
 	}
 }
