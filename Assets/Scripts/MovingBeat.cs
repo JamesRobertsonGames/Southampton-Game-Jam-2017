@@ -49,6 +49,17 @@ public class MovingBeat : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //print(timeofdeath);
+        if (other.tag == "Player")
+        {
+            // Damage here
+        }
+
+        if (other.tag == "HitGood")
+        {
+            Middle.GetComponent<PlayerScoring>().incrementScore();
+            // Increase Score
+        }
+
         Destroy(gameObject);
     }
 
